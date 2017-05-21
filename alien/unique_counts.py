@@ -7,9 +7,9 @@ def unique_counts(aSrc):
 
     ### numpy v1.9 included faster implimentation @ np.unique
     '''
-    print aSrc
+    print(aSrc)
 
     bincnt          = bincount( aSrc )
     elements        = nonzero( bincnt )[0]
 
-    return array( zip( bincnt, elements ) ).T
+    return array( list(zip( bincnt, elements )) ).T

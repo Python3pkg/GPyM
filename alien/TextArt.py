@@ -1,5 +1,5 @@
 import sys
-from AnsiFormatter  import AnsiFormatter
+from .AnsiFormatter  import AnsiFormatter
 
 
 class TextArt(object):
@@ -12,7 +12,7 @@ class TextArt(object):
 
     def __getattr__(self,name):
 
-        if name in AnsiFormatter.FOREGROUND.keys():
+        if name in list(AnsiFormatter.FOREGROUND.keys()):
             return AnsiFormatter(name)
 
         else:

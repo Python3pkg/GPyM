@@ -12,25 +12,25 @@
 
 import  os, sys, importlib
 import  time
-import  cPickle         as pickle
+import  pickle         as pickle
 from    optparse        import OptionParser
-from    ConfigParser    import SafeConfigParser
+from    configparser    import SafeConfigParser
 
 
 from    numpy           import empty
 
-from    alien.dtrange               import dtrange
+from    .alien.dtrange               import dtrange
 
-from    alien.GridCoordinates       import GridCoordinates
+from    .alien.GridCoordinates       import GridCoordinates
 
 #from    alien.read_hdf4             import read_hdf4
 #from    alien.read_hdf5             import read_hdf5
 
-from    alien.TimeSeries            import bin_bytbound
+from    .alien.TimeSeries            import bin_bytbound
 
-from    gpm_data                    import GPM_data
-from    search_granules             import SearchGranules
-from    granule2map                 import granule2map
+from    .gpm_data                    import GPM_data
+from    .search_granules             import SearchGranules
+from    .granule2map                 import granule2map
 
 
 
@@ -72,8 +72,8 @@ class GPM( SearchGranules ):
 
         self.func_read  = getattr( importlib.import_module( modPath ), fnName )
 
-        print self.func_read
-        print type(self.func_read)
+        print(self.func_read)
+        print(type(self.func_read))
 
         '''
         self.cacheDir   = os.path.join( self.dataDir,

@@ -16,13 +16,13 @@ from    optparse        import OptionParser
 from    datetime        import datetime, timedelta
 from    numpy           import array
 
-from    alien.collection            import cached
+from    .alien.collection            import cached
 
-from    get_location_gpm            import get_location_gpm
-from    get_location_trmm           import get_location_trmm
+from    .get_location_gpm            import get_location_gpm
+from    .get_location_trmm           import get_location_trmm
 
-from    get_dtime_gpm               import get_dtime_gpm
-from    get_dtime_trmm              import get_dtime_trmm
+from    .get_dtime_gpm               import get_dtime_gpm
+from    .get_dtime_trmm              import get_dtime_trmm
 
 
 def get_gtrack_dim(srcPath, fn_read, cache=False, cache_dir=None):
@@ -44,7 +44,7 @@ def get_gtrack_dim(srcPath, fn_read, cache=False, cache_dir=None):
                    }[ prjName.split('.')[0] ]
 
 
-    print '+ Get Groundtrack Dimension: {}'.format( srcPath )
+    print('+ Get Groundtrack Dimension: {}'.format( srcPath ))
 
     cache_dir           = os.path.join( cache_dir, yyyy, mm )
 
@@ -65,8 +65,8 @@ def get_gtrack_dim(srcPath, fn_read, cache=False, cache_dir=None):
 
         if uS == 1000000:
             DTime.append( datetime(y,m,d,H,M,S,0)+timedelta(seconds=1) )
-            print 'Warning [NS/ScanTime/Millisecond] == 1000 : %i %i %i %i %i %i %i'    \
-                  %(y,m,d,H,M,S,uS/1000)
+            print('Warning [NS/ScanTime/Millisecond] == 1000 : %i %i %i %i %i %i %i'    \
+                  %(y,m,d,H,M,S,uS/1000))
 
         else:
             DTime.append( datetime(y,m,d,H,M,S,uS) )
@@ -78,8 +78,8 @@ def get_gtrack_dim(srcPath, fn_read, cache=False, cache_dir=None):
 
 
 def main(args,opts):
-    print args
-    print opts
+    print(args)
+    print(opts)
 
     return
 

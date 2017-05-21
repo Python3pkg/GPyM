@@ -12,7 +12,7 @@
 
 import  os,sys
 from    optparse        import OptionParser
-from    LOGGER          import *
+from    .LOGGER          import *
 
 import  bisect
 
@@ -30,7 +30,7 @@ def bin_bytbound( DTime, dtBnd, aSrc=None ):
         return map(None, Idx[:-1], Idx[1:])
 
     else:
-        sIdx    = Idx.next()
+        sIdx    = next(Idx)
 
         aOut    = []
         for eIdx in Idx:
@@ -43,8 +43,8 @@ def bin_bytbound( DTime, dtBnd, aSrc=None ):
 
 @ETA
 def main(args,opts):
-    print args
-    print opts
+    print(args)
+    print(opts)
 
     return
 

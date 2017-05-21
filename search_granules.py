@@ -15,8 +15,8 @@ from    optparse        import OptionParser
 
 from    numpy           import arange, ma
 
-from    get_path        import get_path
-from    get_gtrack_dim  import get_gtrack_dim
+from    .get_path        import get_path
+from    .get_gtrack_dim  import get_gtrack_dim
 
 
 class SearchGranules( object ):
@@ -31,7 +31,7 @@ class SearchGranules( object ):
         gtrkDim = [get_gtrack_dim(path, self.func_read, self.cached, self.cacheDir)
                                                                 for path in srcPATH]
 
-        DTime, Lat, Lon     = zip(*gtrkDim)
+        DTime, Lat, Lon     = list(zip(*gtrkDim))
 
         Granule     = []
         for dtime, lat, lon, path in map(None, DTime, Lat, Lon, srcPATH):
@@ -53,17 +53,17 @@ class SearchGranules( object ):
                                 idx
                                 ])
 
-                print '* [V] ground track dimension (%s): %s'%(self.cached,path)
+                print('* [V] ground track dimension (%s): %s'%(self.cached,path))
 
             else:
-                print '* [_] ground track dimension (%s): %s'%(self.cached,path)
+                print('* [_] ground track dimension (%s): %s'%(self.cached,path))
 
         summary = '| [{}] granules intersects domain {} out of [{}] total between ({}-{}) |\n'    \
                   .format( len(Granule), tuple(BBox), len(srcPATH), sDTime, eDTime )
 
         line    = '+' + '-'*len(summary[3:]) + '+\n'
 
-        print line + summary + line
+        print(line + summary + line)
 
         return Granule
 
@@ -71,8 +71,8 @@ class SearchGranules( object ):
 
 
 def main(args,opts):
-    print args
-    print opts
+    print(args)
+    print(opts)
 
     return
 

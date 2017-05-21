@@ -12,11 +12,11 @@
 
 import  os,sys
 from    optparse        import OptionParser
-from    alien.LOGGER    import *
+from    .alien.LOGGER    import *
 
 from    datetime        import datetime, timedelta
 
-from    gpm             import GPM
+from    .gpm             import GPM
 
 import pylab as pl
 import numpy as np
@@ -25,8 +25,8 @@ from mpl_toolkits.basemap   import Basemap
 
 @ETA
 def main(args,opts):
-    print args
-    print opts
+    print(args)
+    print(opts)
 
 
     '''
@@ -52,7 +52,7 @@ def main(args,opts):
     sDTime  = datetime( 2014,4,4,0 )
     eDTime  = datetime( 2014,4,4,2 )
 
-    print sDTime, eDTime
+    print(sDTime, eDTime)
 
 
     gpm     = GPM(prjName, prdLv, prdVer)
@@ -107,13 +107,13 @@ def main(args,opts):
 
     show()
 
-    print A.shape, A.max(), A.min()
-    for a in A: print a.shape, a.max(), a.min()
-    print gpmJP.data.min(), gpmJP.data.max()
+    print(A.shape, A.max(), A.min())
+    for a in A: print(a.shape, a.max(), a.min())
+    print(gpmJP.data.min(), gpmJP.data.max())
 
 
     for a in gpmJP.griddata:
-        print a.shape
+        print(a.shape)
         figure()
         M.imshow( ma.masked_equal(array(a), -9999.9),vmin=0,vmax=10);colorbar()
         M.drawcoastlines()

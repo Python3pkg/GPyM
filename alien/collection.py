@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 import  os,sys
-from    cStringIO       import StringIO
+from    io       import StringIO
 
 from numpy              import load, save, array
 from numpy.lib.format   import open_memmap
@@ -47,7 +47,7 @@ def cached(name=None, dir='./cached', compress=False, mode='cached', verbose=Tru
                     cached  = cachePath
                     #cached  = open(cachePath,'r')
 
-                if verbose: print '\t!! Cached from %s'%cachePath
+                if verbose: print('\t!! Cached from %s'%cachePath)
 
                 aOut    = load( cached )
 
@@ -56,7 +56,7 @@ def cached(name=None, dir='./cached', compress=False, mode='cached', verbose=Tru
 
                 else:
                     os.remove( cachePath )
-                    raise ValueError, 'empty cache file (erased): %s'%(cachePath)
+                    raise ValueError('empty cache file (erased): %s'%(cachePath))
 
             if os.path.exists( cachePath ) == False or mode == 'update':
                 aOut    = func( *args, **kwargs )
@@ -72,10 +72,10 @@ def cached(name=None, dir='./cached', compress=False, mode='cached', verbose=Tru
                     save( fCache, aOut )
                     fCache.close()
 
-                if verbose: print '\t!! Cached to %s'%cachePath
+                if verbose: print('\t!! Cached to %s'%cachePath)
                 return aOut
 
-            raise KeyError, 'failed exception handling for %s and %s'%( cachePath, mode )
+            raise KeyError('failed exception handling for %s and %s'%( cachePath, mode ))
 
         return inner
 
